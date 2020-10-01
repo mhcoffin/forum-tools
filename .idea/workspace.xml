@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="71fecbfb-f141-47c3-ba83-89460b62e65b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/forum-tools.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmd/forum/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/forum/cursor.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/forum/forum.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/forum/forum_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/forum/posts.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/forum/posts_test.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" path="/usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1iF8tBvhKzTVjTYjP985xEqv60x" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="RunManager" selected="Go Test.posts_test.go">
+    <configuration name="go build forum/ (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="forum-tools" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/cmd/forum" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build forum/" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="forum-tools" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/pkg/forum" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build forum.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="forum-tools" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/pkg/forum/forum.go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="forum_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="forum-tools" />
+      <working_directory value="$PROJECT_DIR$/pkg/forum" />
+      <framework value="gotest" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/pkg/forum/forum_test.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="posts_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="forum-tools" />
+      <working_directory value="$PROJECT_DIR$/pkg/forum" />
+      <framework value="gotest" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/pkg/forum/posts_test.go" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.posts_test.go" />
+        <item itemvalue="Go Test.forum_test.go" />
+        <item itemvalue="Go Build.go build forum/ (1)" />
+        <item itemvalue="Go Build.go build forum.go" />
+        <item itemvalue="Go Build.go build forum/" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1080" y="560" key="#Go_Modules" timestamp="1601492490887">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1080" y="560" key="#Go_Modules/0.0.2560.1440@0.0.2560.1440" timestamp="1601492490887" />
+    <state width="1389" height="218" key="GridCell.Tab.0.bottom" timestamp="1601502565265">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1389" height="218" key="GridCell.Tab.0.bottom/0.0.2560.1440@0.0.2560.1440" timestamp="1601502565265" />
+    <state width="1389" height="218" key="GridCell.Tab.0.center" timestamp="1601502565264">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1389" height="218" key="GridCell.Tab.0.center/0.0.2560.1440@0.0.2560.1440" timestamp="1601502565264" />
+    <state width="1389" height="218" key="GridCell.Tab.0.left" timestamp="1601502565264">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1389" height="218" key="GridCell.Tab.0.left/0.0.2560.1440@0.0.2560.1440" timestamp="1601502565264" />
+    <state width="1389" height="218" key="GridCell.Tab.0.right" timestamp="1601502565265">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1389" height="218" key="GridCell.Tab.0.right/0.0.2560.1440@0.0.2560.1440" timestamp="1601502565265" />
+    <state x="781" y="359" key="SettingsEditor" timestamp="1601494437502">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="781" y="359" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1601494437502" />
+    <state x="1072" y="616" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1601493369308">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1072" y="616" key="git4idea.remote.GitConfigureRemotesDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1601493369308" />
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1601494644389">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1601494644389" />
+  </component>
+</project>
