@@ -1,6 +1,8 @@
 package forum
 
 import (
+	"cloud.google.com/go/firestore"
+	"context"
 	"fmt"
 	"github.com/mhcoffin/forum-tools/pkg/uniq"
 	"math"
@@ -14,19 +16,19 @@ const (
 
 func (f Forum) CreateSection(ctx Context, subject string, description string, index int, uid string) ([]PostID, error) {
 	post := &Post{
-		Path:              []string{uniq.Uniq()},
-		Parent:            "",
-		Index:             index,
-		Header:            subject,
-		Body:              description,
-		Author:            uid,
-		ChildCount:        0,
-		DescendentCount:   0,
-		ViewCount:         0,
-		Deleted:           nil,
-		CreateTime:        time.Time{},
-		BumpTime:          time.Time{},
-		EditTime:          time.Time{},
+		Path:            []string{uniq.Uniq()},
+		Parent:          "",
+		Index:           index,
+		Header:          subject,
+		Body:            description,
+		Author:          uid,
+		ChildCount:      0,
+		DescendentCount: 0,
+		ViewCount:       0,
+		Deleted:         nil,
+		CreateTime:      time.Time{},
+		BumpTime:        time.Time{},
+		EditTime:        time.Time{},
 	}
 	path, err := f.addPost(ctx, post)
 	if err != nil {
@@ -108,4 +110,53 @@ func (f Forum) GetReplies(ctx Context, thread PostID, cursor Cursor, n int) ([]*
 		return nil, fmt.Errorf("failed to get replies: %w", err)
 	}
 	return posts, nil
+}
+
+func (f Forum) DeleteSection(ctx context.Context, sectionID string, uid string, reason string) error {
+	return f.deletePost(ctx, sectionID, uid, reason)
+}
+
+func (f Forum) UpdateThread(ctx context.Context, threadID string, subject string, body string) error {
+	path := f.fs.Collection(Root).Doc(threadID)
+	_, err := path.Update(ctx, []firestore.Update{
+		{Path: "Header", Value: subject},
+		{Path: "Body", Value: body},
+		{Path: "EditTime", Value: firestore.ServerTimestamp},
+	})
+	if err != nil {
+		return fmt.Errorf("failed to update thread: %w", err)
+	}
+	return err
+}
+
+func (f Forum) DeleteThread(ctx context.Context, threadID string, userID string, reason string) error {
+	return f.deletePost(ctx, threadID, userID, reason)
+}
+
+func (f Forum) ListThreads(ctx context.Context, sectionID string) ([]*Post, error) {
+	posts, _, err := f.getChildren(ctx, sectionID, &BumpTimeDesc{}, 1000)
+	if err != nil {
+		return nil, err
+	}
+	return posts, nil
+}
+
+func (f Forum) ListReplies(ctx context.Context, threadID string) ([]*Post, error) {
+	panic("not implemented")
+}
+
+func (f Forum) CreateDraftReply(ctx context.Context, s []string, body string, author string) (string, error) {
+	panic("not implemented")
+}
+
+func (f Forum) DeleteReply(ctx context.Context, path []string, s string) error {
+	panic("not implemented")
+}
+
+func (f Forum) UpdateReply(ctx context.Context, replyID string, body string) error {
+	panic("not implemented")
+}
+
+func (f Forum) InstallReply(ctx context.Context, userID string, docID string) error {
+	panic("not implemented")
 }

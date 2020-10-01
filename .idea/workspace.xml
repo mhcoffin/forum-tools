@@ -40,7 +40,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
-  <component name="RunManager" selected="Go Test.posts_test.go">
+  <component name="RunManager" selected="Go Test.forum_test.go">
     <configuration name="go build forum/ (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="forum-tools" />
       <working_directory value="$PROJECT_DIR$" />
@@ -83,8 +83,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.posts_test.go" />
         <item itemvalue="Go Test.forum_test.go" />
+        <item itemvalue="Go Test.posts_test.go" />
         <item itemvalue="Go Build.go build forum/ (1)" />
         <item itemvalue="Go Build.go build forum.go" />
         <item itemvalue="Go Build.go build forum/" />
