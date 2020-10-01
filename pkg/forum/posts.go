@@ -208,20 +208,13 @@ func (f Forum) DeleteSection(ctx context.Context, sectionID string, uid string, 
 	return f.deletePost(ctx, sectionID, uid, reason)
 }
 
-// CreateDraftThread puts a draft thread in the database, returning the doc ID and an error.
-func (f Forum) CreateDraftThread(ctx context.Context, sectionId string, subject string, body string, authorID string) (string, error) {
-	return "", nil
-	// TODO
-}
-
 func (f Forum) UpdateThread(ctx context.Context, sectionID string, threadID string, body string) error {
 	return nil
 	// TODO
 }
 
-func (f Forum) DeleteThread(ctx context.Context, sectionID string, threadID string, userID string) error {
-	// TODO
-	return nil
+func (f Forum) DeleteThread(ctx context.Context, threadID string, userID string, reason string) error {
+	return f.deletePost(ctx, threadID, userID, reason)
 }
 
 func (f Forum) InstallThread(ctx context.Context, sectionID string, author string, threadID string) error {
@@ -230,21 +223,11 @@ func (f Forum) InstallThread(ctx context.Context, sectionID string, author strin
 }
 
 func (f Forum) ListThreads(ctx context.Context, sectionID string) ([]*Post, error) {
-	path := f.fs.Collection(Root).Where("Parent", "==", sectionID)
-	docs, err := path.Documents(ctx).GetAll()
+	posts, _, err := f.getChildren(ctx, sectionID, &BumpTimeDesc{}, 1000)
 	if err != nil {
 		return nil, err
 	}
-	result := make([]*Post, len(docs))
-	for k, doc := range docs {
-		p := &Post{}
-		err = doc.DataTo(p)
-		if err != nil {
-			return nil, fmt.Errorf("failed to decode thread doc: %w", err)
-		}
-		result[k] = p
-	}
-	return result, nil
+	return posts, nil
 }
 
 func (f Forum) ListReplies(ctx context.Context, threadID string) ([]*Post, error) {

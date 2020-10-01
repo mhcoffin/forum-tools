@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71fecbfb-f141-47c3-ba83-89460b62e65b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/forum-tools.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmd/forum/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/forum/cursor.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/forum/forum.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/forum/forum_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/forum/posts.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/forum/posts_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/forum/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/forum/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/forum/posts.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/forum/posts.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,9 +127,9 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1072" y="616" key="git4idea.remote.GitConfigureRemotesDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1601493369308" />
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1601494644389">
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1601514900243">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1601494644389" />
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1601514900243" />
   </component>
 </project>

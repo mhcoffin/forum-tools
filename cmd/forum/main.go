@@ -62,6 +62,8 @@ var (
 	threadBody        = thread.String("body", "", "thread body")
 	threadUid         = thread.String("uid", "", "author or thread")
 	threadDisplayName = thread.String("display", "", "display name of poster")
+	threadReason      = thread.String("reason", "", "reason for delete")
+	threadID          = thread.String("id", "", "ID of thread")
 
 	reply            = flag.NewFlagSet("reply", flag.ExitOnError)
 	replyCreate      = reply.Bool("create", false, "create a reply")
@@ -275,17 +277,16 @@ func UpdateThread() {
 }
 
 func DeleteThread() {
-	if *sectionId == "" || *threadId == "" || *uid == "" {
-		log.Fatal("-f, -t, and -u are required")
+	if *threadID == "" || *threadUid == "" || *threadReason == "" {
+		log.Fatal("-id, -uid and -reason are required")
 	}
-	err := fm.DeleteThread(ctx, *sectionId, *threadId, *uid)
+	err := fm.DeleteThread(ctx, *threadID, *threadUid, *threadReason)
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
 func ListThreads() {
-	fmt.Println("ListThreads")
 	if *threadSection == "" {
 		log.Fatal("-section required")
 	}
