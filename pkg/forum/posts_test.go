@@ -31,7 +31,6 @@ func TestFBClient_AddPost(t *testing.T) {
 	after, err := client.getPost(ctx, root.ID())
 	require.Nil(t, err)
 	assert.WithinDuration(t, time.Now(), after.CreateTime, time.Second)
-	assert.Equal(t, after.CreateTime, after.BumpTime)
 	assert.Equal(t, after.CreateTime, after.EditTime)
 	assert.Nil(t, after.Deleted)
 }
@@ -48,7 +47,6 @@ func TestFBClient_AddReply(t *testing.T) {
 
 	rootAfterAdd, err := client.getPost(ctx, root.ID())
 	require.Nil(t, err)
-	assert.Equal(t, post.CreateTime, rootAfterAdd.BumpTime)
 	assert.Equal(t, 1, rootAfterAdd.DescendentCount)
 	assert.Equal(t, 1, rootAfterAdd.ChildCount)
 }
@@ -73,7 +71,8 @@ func TestFBClient_AddPostReplies(t *testing.T) {
 	for k := 0; k < N; k++ {
 		p, err := client.getPost(ctx, path[k].ID())
 		require.Nil(t, err)
-		assert.Equal(t, lastPost.CreateTime, p.BumpTime)
+		assert.NotNil(t, p.Bump)
+		assert.Equal(t, lastPost.CreateTime, p.Bump.Time)
 		assert.Equal(t, N-k-1, p.DescendentCount)
 		if k == N-1 {
 			assert.Equal(t, 0, p.ChildCount)
@@ -182,12 +181,13 @@ func TestFBClient_DeletePost(t *testing.T) {
 	require.Nil(t, err)
 	root := AddRandomPost(t, client)
 	thread := AddRandomPost(t, client, root.Path...)
-	err = client.deletePost(ctx, thread.ID(), "mhc", "because")
+	err = client.deletePost(ctx, thread.ID(), mhc, "because")
 	require.Nil(t, err)
 	after, err := client.getPost(ctx, thread.ID())
 	require.Nil(t, err)
 	assert.NotNil(t, after.Deleted)
-	assert.Equal(t, "mhc", after.Deleted.Who)
+	assert.Equal(t, mhc.Name, after.Deleted.Who.Name)
+	assert.WithinDuration(t, mhc.Joined, after.Deleted.Who.Joined, time.Millisecond)
 	assert.Equal(t, "because", after.Deleted.Why)
 	assert.WithinDuration(t, time.Now(), after.Deleted.When, time.Second)
 
@@ -218,20 +218,28 @@ func AddRandomPost(t *testing.T, client *Forum, path ...string) *Post {
 	docId := uniq.Uniq()
 	path = append(path, docId)
 	post := &Post{
-		Path:              path,
-		Index:             100,
-		Header:            uniq.Uniq(),
-		Body:              uniq.Uniq(),
-		CreateTime:        time.Time{},
-		BumpTime:          time.Time{},
-		EditTime:          time.Time{},
-		Author:            uniq.Uniq(),
-		AuthorDisplayName: uniq.Uniq(),
-		ChildCount:        0,
-		DescendentCount:   0,
-		ViewCount:         0,
+		Path:            path,
+		Index:           100,
+		Head:            uniq.Uniq(),
+		Body:            uniq.Uniq(),
+		CreateTime:      time.Time{},
+		EditTime:        time.Time{},
+		Author:          RandomUser(),
+		Bump:            &Bump{Time: time.Time{}},
+		ChildCount:      0,
+		DescendentCount: 0,
+		ViewCount:       0,
 	}
 	_, err := client.addPost(ctx, post)
 	require.Nil(t, err)
 	return post
+}
+
+func RandomUser() User {
+	return User{
+		ID:       uniq.Uniq(),
+		Name:     uniq.Uniq(),
+		PhotoURL: "http:/photo/" + uniq.Uniq(),
+		Joined:   time.Now(),
+	}
 }

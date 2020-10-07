@@ -49,12 +49,12 @@ func (tc *BumpTimeDesc) value() interface{} {
 }
 
 func (tc *BumpTimeDesc) field() string {
-	return "BumpTime"
+	return "Bump.Time"
 }
 
 func (tc *BumpTimeDesc) Next(post *Post) Cursor {
 	return &CreateTimeAsc{
-		tm: post.BumpTime,
+		tm: post.Bump.Time,
 	}
 }
 

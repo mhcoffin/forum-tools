@@ -15,26 +15,41 @@ const (
 )
 
 type PostID = string
+
+type User struct {
+	ID       string
+	Name     string
+	PhotoURL string
+	Joined   time.Time
+}
+
 type DeleteInfo struct {
 	When time.Time
-	Who  string
+	Who  User
 	Why  string
 }
+
+type Bump struct {
+	ID     PostID
+	Head   string
+	Author User
+	Time   time.Time `firestore:",serverTimestamp"`
+}
+
 type Post struct {
-	Path              []PostID // Path to this post, from root down.
-	Index             int      // For explicit ordering
-	Parent            PostID   // ID of the parent of this post (same as next-to-last element of Path)
-	Header            string   // Subject or summary of post
-	Body              string   // Body of post (HTML)
-	Author            string   // ID of author
-	AuthorDisplayName string   // Display Name of author
-	ChildCount        int      // Number of direct children
-	DescendentCount   int      // Number of direct and indirect children
-	ViewCount         int      // Number of times this post has been viewed
-	Deleted           *DeleteInfo
-	CreateTime        time.Time `firestore:",serverTimestamp"` // Time this post was created.
-	BumpTime          time.Time `firestore:",serverTimestamp"` // Last time a descendant has been added or modified
-	EditTime          time.Time `firestore:",serverTimestamp"` // Last time the header or body were edited
+	Path            []PostID // Path to this post, from root down.
+	Index           int      // For explicit ordering
+	Parent          PostID   // ID of the parent of this post (same as next-to-last element of Path)
+	Head            string   // Subject or summary of post
+	Body            string   // Body of post (HTML)
+	Author          User     // ID of author
+	Bump            *Bump    // Most recent change to tree rooted here.
+	ChildCount      int      // Number of direct children
+	DescendentCount int      // Number of direct and indirect children
+	ViewCount       int      // Number of times this post has been viewed
+	Deleted         *DeleteInfo
+	CreateTime      time.Time `firestore:",serverTimestamp"` // Time this post was created.
+	EditTime        time.Time `firestore:",serverTimestamp"` // Last time the header or body were edited
 }
 
 func (p *Post) ID() PostID {
@@ -79,14 +94,17 @@ func (f Forum) addPost(ctx Context, post *Post) ([]PostID, error) {
 		doc := f.fs.Collection(Root).Doc(post.Path[k])
 		updates := []firestore.Update{
 			{Path: "DescendentCount", Value: firestore.Increment(1)},
-			{Path: "BumpTime", Value: firestore.ServerTimestamp},
+			{Path: "ID", Value: post.ID()},
+			{Path: "Bump.Time", Value: firestore.ServerTimestamp},
+			{Path: "Bump.Author", Value: post.Author},
+			{Path: "Bump.Head", Value: post.Head},
 		}
 		if k == depth-2 {
 			updates = append(updates, firestore.Update{Path: "ChildCount", Value: firestore.Increment(1)})
 		}
 		wb.Update(doc, updates)
 	}
-	wb.Create(f.fs.Collection(Root).Doc(post.Path[depth-1]), post)
+	wb.Create(f.fs.Collection(Root).Doc(post.ID()), post)
 
 	_, err := wb.Commit(ctx)
 	if err != nil {
@@ -180,7 +198,7 @@ func (f Forum) performQuery(ctx Context, query firestore.Query, cursor Cursor, n
 }
 
 // deletePost marks a post deleted. It does not actually delete the post or any children.
-func (f Forum) deletePost(ctx Context, postID PostID, who string, why string) error {
+func (f Forum) deletePost(ctx Context, postID PostID, who User, why string) error {
 	fmt.Println(postID)
 	path := f.fs.Collection(Root).Doc(postID)
 	fmt.Println(path.Path)
@@ -203,4 +221,3 @@ func (f Forum) expungePost(ctx Context, postId PostID) error {
 	}
 	return nil
 }
-

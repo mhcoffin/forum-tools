@@ -14,20 +14,20 @@ const (
 	adminDisplay = "Mikey"
 )
 
-func (f Forum) CreateSection(ctx Context, subject string, description string, index int, uid string) ([]PostID, error) {
+func (f Forum) CreateSection(ctx Context, subject string, description string, index int, author User) ([]PostID, error) {
 	post := &Post{
 		Path:            []string{uniq.Uniq()},
 		Parent:          "",
 		Index:           index,
-		Header:          subject,
+		Head:            subject,
 		Body:            description,
-		Author:          uid,
+		Author:          author,
+		Bump:            &Bump{Time: time.Time{}},
 		ChildCount:      0,
 		DescendentCount: 0,
 		ViewCount:       0,
 		Deleted:         nil,
 		CreateTime:      time.Time{},
-		BumpTime:        time.Time{},
 		EditTime:        time.Time{},
 	}
 	path, err := f.addPost(ctx, post)
@@ -45,20 +45,19 @@ func (f Forum) GetSections(ctx Context) ([]*Post, error) {
 	return posts, nil
 }
 
-func (f Forum) CreateThread(ctx Context, subject string, body string, author string, displayName string, sectionId PostID) ([]PostID, error) {
+func (f Forum) CreateThread(ctx Context, subject string, body string, author User, sectionId PostID) ([]PostID, error) {
 	post := &Post{
-		Path:              []string{sectionId, uniq.Uniq()},
-		Header:            subject,
-		Body:              body,
-		Author:            author,
-		AuthorDisplayName: displayName,
-		ChildCount:        0,
-		DescendentCount:   0,
-		ViewCount:         0,
-		Deleted:           nil,
-		CreateTime:        time.Time{},
-		BumpTime:          time.Time{},
-		EditTime:          time.Time{},
+		Path:            []string{sectionId, uniq.Uniq()},
+		Head:            subject,
+		Body:            body,
+		Author:          author,
+		Bump:            &Bump{Time: time.Time{}},
+		ChildCount:      0,
+		DescendentCount: 0,
+		ViewCount:       0,
+		Deleted:         nil,
+		CreateTime:      time.Time{},
+		EditTime:        time.Time{},
 	}
 	path, err := f.addPost(ctx, post)
 	if err != nil {
@@ -79,20 +78,20 @@ func (f Forum) GetThreads(ctx Context, section PostID, cursor Cursor, n int) ([]
 	return posts, cursor, nil
 }
 
-func (f Forum) CreateReply(ctx Context, parent []PostID, body string, author string, displayName string) ([]PostID, error) {
+func (f Forum) CreateReply(ctx Context, parent []PostID, subject string, body string, author User) ([]PostID, error) {
 	path := append(parent, uniq.Uniq())
 	post := &Post{
-		Path:              path,
-		Body:              body,
-		Author:            author,
-		AuthorDisplayName: displayName,
-		ChildCount:        0,
-		DescendentCount:   0,
-		ViewCount:         0,
-		Deleted:           nil,
-		CreateTime:        time.Time{},
-		BumpTime:          time.Time{},
-		EditTime:          time.Time{},
+		Path:            path,
+		Head:            "Re: " + subject,
+		Body:            body,
+		Author:          author,
+		Bump:            &Bump{Time: time.Time{}},
+		ChildCount:      0,
+		DescendentCount: 0,
+		ViewCount:       0,
+		Deleted:         nil,
+		CreateTime:      time.Time{},
+		EditTime:        time.Time{},
 	}
 	path, err := f.addPost(ctx, post)
 	if err != nil {
@@ -112,8 +111,8 @@ func (f Forum) GetReplies(ctx Context, thread PostID, cursor Cursor, n int) ([]*
 	return posts, nil
 }
 
-func (f Forum) DeleteSection(ctx context.Context, sectionID string, uid string, reason string) error {
-	return f.deletePost(ctx, sectionID, uid, reason)
+func (f Forum) DeleteSection(ctx context.Context, sectionID string, user User, reason string) error {
+	return f.deletePost(ctx, sectionID, user, reason)
 }
 
 func (f Forum) UpdateThread(ctx context.Context, threadID string, subject string, body string) error {
@@ -129,8 +128,8 @@ func (f Forum) UpdateThread(ctx context.Context, threadID string, subject string
 	return err
 }
 
-func (f Forum) DeleteThread(ctx context.Context, threadID string, userID string, reason string) error {
-	return f.deletePost(ctx, threadID, userID, reason)
+func (f Forum) DeleteThread(ctx context.Context, threadID string, user User, reason string) error {
+	return f.deletePost(ctx, threadID, user, reason)
 }
 
 func (f Forum) ListThreads(ctx context.Context, sectionID string) ([]*Post, error) {

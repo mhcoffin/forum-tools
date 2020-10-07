@@ -71,6 +71,7 @@ var (
 	replyUpdate      = reply.Bool("update", false, "update reply")
 	replyDelete      = reply.Bool("delete", false, "delete reply")
 	replyExpunge     = reply.Bool("expunge", false, "expunge reply")
+	replyHeader      = reply.String("subject", "", "Subject of thread")
 	replyBody        = reply.String("body", "", "body of reply")
 	replyUid         = reply.String("uid", "", "user ID of author")
 	replyDisplayName = reply.String("display", "", "display name of poster")
@@ -192,10 +193,10 @@ func Replies() {
 }
 
 func CreateReply() {
-	if *replyUid == "" || *replyBody == "" || *replyDisplayName == "" || *replyPath == "" {
+	if *replyUid == "" || *replyBody == "" || *replyDisplayName == "" || *replyPath == ""  || *replyHeader == ""{
 		log.Fatal("-uid, -body, -display, -path required")
 	}
-	_, err := fm.CreateReply(ctx, strings.Split(*replyPath, "/"), *replyBody, *replyUid, *replyDisplayName)
+	_, err := fm.CreateReply(ctx, strings.Split(*replyPath, "/"), *replyHeader, *replyBody, *replyUid, *replyDisplayName)
 	if err != nil {
 		log.Fatal(fmt.Errorf("create reply failed: %w", err))
 	}

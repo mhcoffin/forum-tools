@@ -2,14 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71fecbfb-f141-47c3-ba83-89460b62e65b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/cmd/populate/populate.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/forum/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/forum/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/forum/cursor.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/forum/cursor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/forum/forum.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/forum/forum.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/forum/forum_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/forum/forum_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/forum/posts.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/forum/posts.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/forum/posts_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/forum/posts_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" path="/usr/local/go" />
   <component name="Git.Settings">
@@ -23,6 +35,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -39,8 +52,27 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="GoMoveDeclarationDialog.RECENT_KEY">
+      <recent name="$PROJECT_DIR$/pkg/forum" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cmd" />
+    </key>
   </component>
   <component name="RunManager" selected="Go Test.forum_test.go">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="forum-tools" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$" />
+      <package value="github.com/mhcoffin/forum-tools" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build forum/ (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="forum-tools" />
       <working_directory value="$PROJECT_DIR$" />
@@ -48,19 +80,37 @@
       <directory value="$PROJECT_DIR$/cmd/forum" />
       <method v="2" />
     </configuration>
-    <configuration name="go build forum/" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TestFBClient_AddPostReplies in github.com/mhcoffin/forum-tools/pkg/forum" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="forum-tools" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="DIRECTORY" />
-      <directory value="$PROJECT_DIR$/pkg/forum" />
+      <working_directory value="$PROJECT_DIR$/pkg/forum" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/mhcoffin/forum-tools/pkg/forum" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestFBClient_AddPostReplies\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="go build forum.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TestFBClient_DeletePost in github.com/mhcoffin/forum-tools/pkg/forum" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="forum-tools" />
+      <working_directory value="$PROJECT_DIR$/pkg/forum" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/mhcoffin/forum-tools/pkg/forum" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestFBClient_DeletePost\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
       <module name="forum-tools" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/pkg/forum/forum.go" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <package value="github.com/mhcoffin/forum-tools" />
       <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
     <configuration name="forum_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -85,13 +135,25 @@
       <list>
         <item itemvalue="Go Test.forum_test.go" />
         <item itemvalue="Go Test.posts_test.go" />
-        <item itemvalue="Go Build.go build forum/ (1)" />
-        <item itemvalue="Go Build.go build forum.go" />
-        <item itemvalue="Go Build.go build forum/" />
+        <item itemvalue="Go Test.TestFBClient_AddPostReplies in github.com/mhcoffin/forum-tools/pkg/forum" />
+        <item itemvalue="Go Test.TestFBClient_DeletePost in github.com/mhcoffin/forum-tools/pkg/forum" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="71fecbfb-f141-47c3-ba83-89460b62e65b" name="Default Changelist" comment="" />
+      <created>1601580473270</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601580473270</updated>
+      <workItem from="1601580477063" duration="289000" />
+      <workItem from="1601581064329" duration="923000" />
+      <workItem from="1601584612125" duration="25000" />
+    </task>
+    <servers />
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
@@ -103,26 +165,30 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1080" y="560" key="#Go_Modules/0.0.2560.1440@0.0.2560.1440" timestamp="1601492490887" />
-    <state width="1389" height="218" key="GridCell.Tab.0.bottom" timestamp="1601502565265">
+    <state width="1236" height="422" key="GridCell.Tab.0.bottom" timestamp="1602029003093">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="1389" height="218" key="GridCell.Tab.0.bottom/0.0.2560.1440@0.0.2560.1440" timestamp="1601502565265" />
-    <state width="1389" height="218" key="GridCell.Tab.0.center" timestamp="1601502565264">
+    <state width="1236" height="422" key="GridCell.Tab.0.bottom/0.0.2560.1440@0.0.2560.1440" timestamp="1602029003093" />
+    <state width="1236" height="422" key="GridCell.Tab.0.center" timestamp="1602029003093">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="1389" height="218" key="GridCell.Tab.0.center/0.0.2560.1440@0.0.2560.1440" timestamp="1601502565264" />
-    <state width="1389" height="218" key="GridCell.Tab.0.left" timestamp="1601502565264">
+    <state width="1236" height="422" key="GridCell.Tab.0.center/0.0.2560.1440@0.0.2560.1440" timestamp="1602029003093" />
+    <state width="1236" height="422" key="GridCell.Tab.0.left" timestamp="1602029003092">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="1389" height="218" key="GridCell.Tab.0.left/0.0.2560.1440@0.0.2560.1440" timestamp="1601502565264" />
-    <state width="1389" height="218" key="GridCell.Tab.0.right" timestamp="1601502565265">
+    <state width="1236" height="422" key="GridCell.Tab.0.left/0.0.2560.1440@0.0.2560.1440" timestamp="1602029003092" />
+    <state width="1236" height="422" key="GridCell.Tab.0.right" timestamp="1602029003093">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="1389" height="218" key="GridCell.Tab.0.right/0.0.2560.1440@0.0.2560.1440" timestamp="1601502565265" />
+    <state width="1236" height="422" key="GridCell.Tab.0.right/0.0.2560.1440@0.0.2560.1440" timestamp="1602029003093" />
     <state x="781" y="359" key="SettingsEditor" timestamp="1601494437502">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="781" y="359" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1601494437502" />
+    <state x="619" y="451" key="com.goide.refactor.move.GoMoveDeclarationDialog" timestamp="1601515583619">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="619" y="451" key="com.goide.refactor.move.GoMoveDeclarationDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1601515583619" />
     <state x="1072" y="616" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1601493369308">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
